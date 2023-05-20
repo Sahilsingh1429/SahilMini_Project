@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Management</title>
+  <style>
+    /* Styling for the header and footer */
+    header, footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* Styling for the main content area */
+    /* main {
+      margin: 20px auto;
+      max-width: 600px;
+      text-align: center;
+    } */
+      nav{
+        display: flex;
+        justify-content: space-around;
+        font-size: 20px;
+        
+    }
+    nav a{
+        border: 1px solid black;
+        color: goldenrod;
+        border-radius: 12px;
+        padding: 10px;
+        text-decoration: none;
+    }
+    
+
+    /* Styling for the table */
+    table {
+      /* width: 100%; */
+      margin: auto;
+
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      width: 130px;
+    }
+
+    th {
+      background-color: #333;
+      color: #fff;
+    }
+    .head{
+      width: 200px;
+    }
+    td button,a{
+      text-decoration: none;
+      color: #333;
+    }
+    td button{
+      margin-left: 30px;
+    }
+    
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Product Management</h1>
+    <nav>
+     <a href="{% url 'admin_index' %}">Home</a> 
+      <a href="{% url 'view_product' %}">View Products</a> |
+      <a href="{% url 'update_product' %}">Update Product</a>
+    </nav>
+  </header>
+
+  <main>
+    <table>
+     
+     
+        <thead>
+          <tr>
+         
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Picture</th>
+            <th class="head">Description</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in userdata2 %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.product.name}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.product_pic.url}}</td>
+                <td>{{i.product_model}}</td>
+                <td><button><a href="{% url 'delete' i.product.id %}">Delete</a></button></td>
+                
+                
+
+            </tr>
+            {% endfor %}
+          <!-- Table rows with actual product data will be rendered server-side -->
+        </tbody>
+      </table>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Product Management</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Search</title>
+  <style>
+    /* Styling for the header and footer */
+    header, footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* Styling for the main content area */
+    main {
+      margin: 20px auto;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    /* Styling for the product cards */
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .product-card h2 {
+      margin-top: 0;
+    }
+
+    .product-card p {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Product Search</h1>
+  </header>
+
+  <main>
+    <div class="search-bar">
+      <form action="{% url 'search' %}" method="GET">
+        <input type="text" name="search" placeholder="Search...">
+        <button type="submit">Search</button>
+        <button><a href="{% url 'logout' %}">logout</a></button>
+      </form>
+    </div>
+
+    <div id="product-container">
+      {% for i in sec %}
+      <div class="product-card">
+        <img src="{{i.product_pic.url}}" style="width: 200px; height:100px;">
+        <h2>{{i.product.name}}</h2>
+        <p>{{i.price}}</p>
+        <p>{{i.product_model}}</p>
+      </div>
+      {{sss}}
+      {% endfor %}
+
+   </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Product Search</p>
+  </footer>
+</body>
+</html>
+
